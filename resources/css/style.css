@@ -118,6 +118,10 @@ header {
     font-size: 1rem;
 }
 
+.iconCart {
+    width: 38px;
+}
+
 .logo img {
     width: 70%;
 }

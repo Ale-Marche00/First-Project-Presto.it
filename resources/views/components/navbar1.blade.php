@@ -15,7 +15,7 @@
                 </li>
 
                 <!-- Link Categorie -->
-                <li class="nav-item dropdown custom_hover_nav">
+                <li class="nav-item dropdown custom_hover_nav me-2">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         {{ __('ui.nav_category') }}
@@ -35,7 +35,7 @@
                         @endforeach
                     </ul>
                 
-                <li class="nav-item custom_hover_nav ms-2">
+                <li class="nav-item custom_hover_nav">
                     <a class="nav-link" href="{{ route('revisor.info') }}">{{ __('ui.want_become_revisor') }}</a>
                 </li>
             </ul>
@@ -84,6 +84,7 @@
                         </ul>
                     </li>
                 </ul>
+                <a href="{{ route('cart.index', [Auth::user()->name]) }}"><img class="iconCart" src="{{ Storage::url('/image/iconCart.png') }}" alt="cart"></a>
             @else
                 <ul class="navbar-nav mb-2 me-2 mb-lg-0">
                     <li class="nav-item custom_hover_nav">

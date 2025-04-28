@@ -6,6 +6,7 @@ use App\Http\Controllers\ForgetPasswordManager;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\RevisorController;
+use App\Http\Controllers\CartController;
 use App\Http\Middleware\ThrottlePasswordAttempts;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
@@ -56,6 +57,9 @@ Route::middleware(['auth'])->group(function () {
     // Eliminazione account
     Route::post('/profile/delete', [ProfileController::class, 'deleteAccount'])->name('profile.delete');
 
+    // Rotta pagina carrello
+    Route::get('{user:name}/cart', [CartController::class, 'cartIndex'])->name('cart.index');
+
     // Rotta per creare un articolo
     Route::get('/create/article', [ArticleController::class, 'create'])->name('create.article');
 });
@@ -76,9 +80,10 @@ Route::get('/revisor/reject/{user}', [RevisorController::class, 'rejectRevisor']
 Route::post('/richiesta-revisore', [RevisorController::class, 'richiedi'])->name('revisore.richiesta');
 
 
-// Aggiungi una rotta per gestire il cambio lingua
+
+// Aggiunge una rotta per gestire il cambio lingua
 Route::get('language/{lang}', function ($lang) {
-    // Definisci un array di lingue supportate
+    // Array di lingue supportate
     $availableLanguages = ['en', 'it', 'es', 'fr', 'de', 'pt', 'ru', 'zh', 'ja', 'ko', 'ar', 'tr', 'pl', 'nl', 'sv', 'fi', 'no', 'uk', 'ro', 'cs', 'el'];
 
     if (in_array($lang, $availableLanguages)) {
