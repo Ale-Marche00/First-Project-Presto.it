@@ -12,6 +12,7 @@ class Article extends Model
     use HasFactory, Searchable;
 
     protected $fillable = [
+        'id',
         'title',
         'description',
         'image',

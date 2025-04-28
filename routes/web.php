@@ -64,6 +64,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create/article', [ArticleController::class, 'create'])->name('create.article');
 });
 
+// Rotte per la gestione del carrello
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+
 // Rotte per il revisore
 Route::prefix('revisor')->middleware('isRevisor')->group(function () {
     Route::get('/index', [RevisorController::class, 'index'])->name('revisor.index');
