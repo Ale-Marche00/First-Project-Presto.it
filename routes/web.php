@@ -59,15 +59,16 @@ Route::middleware(['auth'])->group(function () {
 
     // Rotta pagina carrello
     Route::get('{user:name}/cart', [CartController::class, 'cartIndex'])->name('cart.index');
+    // Rotte per la gestione del carrello
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 
     // Rotta per creare un articolo
     Route::get('/create/article', [ArticleController::class, 'create'])->name('create.article');
 });
 
-// Rotte per la gestione del carrello
-    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
-    Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
-    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+
 
 // Rotte per il revisore
 Route::prefix('revisor')->middleware('isRevisor')->group(function () {

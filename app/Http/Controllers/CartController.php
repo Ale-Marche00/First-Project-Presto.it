@@ -35,4 +35,28 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'articolo aggiunto al carrello');
 
     }
+
+    public function update(Request $request) 
+    {
+        if($request->article_id && $request->quantity) {
+            $cart = session()->get('cart');
+            $cart[$request->article_id]['quantity'] = $request->quantity;
+            session()->put('cart', $cart);
+
+            return redirect()->back()->with('success', 'quantità aggiornata');
+        }
+    }
+
+    public function remove(Request $request)
+    {
+        $cart = session()->get('cart');
+        if(isset($cart[$request->article_id])) {
+            unset($cart[$request->article_id]);
+            session()->put('cart', $cart);
+        }
+
+        return redirect()->back()->with('success', 'articolo rimosso dal carrello');
+
+    }
+
 }

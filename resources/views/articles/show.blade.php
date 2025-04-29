@@ -37,7 +37,7 @@
                 </div>
 
                 {{-- parte descrittiva --}}
-                <div class="col-lg-6 ">
+                <div class="col-lg-6">
                     <div class="container text-start">
                         <!-- Nome Venditore con classe personalizzata -->
                         <p class="vendor-name"><strong>{{__('ui.author')}} : {{$article->user->name}}</strong></p>
@@ -50,11 +50,13 @@
                     </div>
                     <form action="{{ route('cart.add') }}" method="POST">
                         @csrf
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-end mb-5">
                             <input type="hidden" name="article_id" value="{{ $article->id }}">
                             <button type="submit" class="btn btn_custom w-25">Aggiungi al carrello</button>
                         </div>
                     </form>
+                    
+                    <x-success/>
 
                 </div>
                 
